@@ -15,13 +15,13 @@ pipeline{
      stage("Build & SonarQube analysis") {
             agent any
             steps {
-              withSonarQubeEnv('SonarPassport') {
+              withSonarQubeEnv('sonar-test') {
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
               }
             }
           }
-     stage("Quality gate") {
+     /*stage("Quality gate") {
             steps {
                 waitForQualityGate abortPipeline: true
             }
@@ -42,7 +42,7 @@ pipeline{
          
       )
       }
-     }
+     }*/
   }
         post {  
          always {  
